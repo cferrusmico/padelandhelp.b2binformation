@@ -385,8 +385,7 @@
 
             <form id="b2b-form" novalidate aria-labelledby="form-title">
               <div class="honeypot" aria-hidden="true">
-                <label for="company-website">Company website</label>
-                <input id="company-website" name="_honey" type="text" tabindex="-1" autocomplete="off">
+                <input name="_honey" type="text" tabindex="-1" autocomplete="off">
               </div>
               <div class="form-grid">
                 <div class="field">
@@ -527,9 +526,16 @@
                     <span data-lang="es">Tu responsable comercial te contactará por email y WhatsApp cuando la cuenta esté creada. También puedes escribirle a los datos de la derecha.</span>
                   </p>
                   <p class="form-fail" data-form-fail hidden>
-                    <span data-lang="en">We could not send your request. Please try again, or use Send an Email.</span>
-                    <span data-lang="fr">Nous n’avons pas pu envoyer votre demande. Réessayez, ou utilisez « Envoyer un e-mail ».</span>
-                    <span data-lang="es">No hemos podido enviar tu solicitud. Inténtalo de nuevo o usa «Enviar un correo».</span>
+                    <span data-fail="generic">
+                      <span data-lang="en">We could not send your request. Please try again, or use Send an Email.</span>
+                      <span data-lang="fr">Nous n’avons pas pu envoyer votre demande. Réessayez, ou utilisez « Envoyer un e-mail ».</span>
+                      <span data-lang="es">No hemos podido enviar tu solicitud. Inténtalo de nuevo o usa «Enviar un correo».</span>
+                    </span>
+                    <span data-fail="activate" hidden>
+                      <span data-lang="en">Open the Activate Form email sent to b2beu@zonadepadel.com, then submit this form again.</span>
+                      <span data-lang="fr">Ouvrez l’e-mail Activate Form envoyé à b2beu@zonadepadel.com, puis envoyez à nouveau ce formulaire.</span>
+                      <span data-lang="es">Abre el correo Activate Form enviado a b2beu@zonadepadel.com y vuelve a enviar este formulario.</span>
+                    </span>
                   </p>
                 </div>
               </div>

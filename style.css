@@ -691,6 +691,13 @@ textarea:focus {
   margin-top: 4px;
 }
 
+.btn-submit:disabled {
+  background: var(--blue);
+  color: var(--white);
+  opacity: 1;
+  cursor: default;
+}
+
 .direct-actions {
   display: flex;
   flex-direction: column;

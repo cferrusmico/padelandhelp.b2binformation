@@ -243,12 +243,31 @@ const ACCOUNT_FIELDS = ["first-name", "last-name", "vat-number", "company-name",
  * Later requests include the form fields, using the labels currently on screen.
  * A success message is shown only after FormSubmit accepts the request.
  */
+const SUBMIT_LABELS = {
+  idle: {
+    en: "Request B2B Account",
+    fr: "Demander un compte B2B",
+    es: "Solicitar cuenta B2B"
+  },
+  sending: {
+    en: "Sending...",
+    fr: "Envoi…",
+    es: "Enviando..."
+  },
+  sent: {
+    en: "Sent",
+    fr: "Envoyé",
+    es: "Enviado"
+  }
+};
+
 function accountPayload() {
   const language = lang();
   const payload = {
     _subject: COPY[language].subjectAccount,
     _template: "table",
     _captcha: "false",
+    _url: window.location.href,
     email: fieldValue("email")
   };
 
@@ -269,20 +288,40 @@ function accountPayload() {
 function setFormStatus(state) {
   const success = document.querySelector("[data-form-success]");
   const failure = document.querySelector("[data-form-fail]");
+  const showFailure = state === "fail" || state === "activate";
   if (success) success.hidden = state !== "success";
-  if (failure) failure.hidden = state !== "fail";
+  if (failure) failure.hidden = !showFailure;
+  if (!failure) return;
+  const generic = failure.querySelector("[data-fail='generic']");
+  const activate = failure.querySelector("[data-fail='activate']");
+  if (generic) generic.hidden = state === "activate";
+  if (activate) activate.hidden = state !== "activate";
+}
+
+function setSubmitLabel(state) {
+  const button = form.querySelector(".btn-submit");
+  if (!button) return;
+  const labels = SUBMIT_LABELS[state];
+  button.querySelectorAll("[data-lang]").forEach((span) => {
+    const language = span.getAttribute("data-lang");
+    if (labels[language]) span.textContent = labels[language];
+  });
+  button.disabled = state !== "idle";
+}
+
+function needsActivation(data) {
+  return /activ/i.test(String(data && data.message || ""));
 }
 
 async function sendAccountRequest() {
-  const honey = document.getElementById("company-website");
+  const honey = form.querySelector("[name='_honey']");
   if (honey && honey.value.trim()) return;
 
-  const button = form.querySelector(".btn-submit");
-  if (button) button.disabled = true;
+  setSubmitLabel("sending");
   setFormStatus("pending");
 
   try {
-    const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(CONTACT_EMAIL)}`, {
+    const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -299,13 +338,19 @@ async function sendAccountRequest() {
     if (response.ok && String(data.success) === "true") {
       setFormStatus("success");
       form.reset();
+      setSubmitLabel("sent");
+      return;
+    }
+    if (needsActivation(data)) {
+      setFormStatus("activate");
+      setSubmitLabel("idle");
       return;
     }
     setFormStatus("fail");
+    setSubmitLabel("idle");
   } catch (error) {
     setFormStatus("fail");
-  } finally {
-    if (button) button.disabled = false;
+    setSubmitLabel("idle");
   }
 }
 
