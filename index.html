@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Padel &amp; Help | Official B2B Platform of Zona de Padel</title>
+  <meta name="description" content="Discover Padel &amp; Help, the official B2B platform of Zona de Padel. Access professional padel equipment, competitive B2B prices and personalized support.">
+  <meta name="theme-color" content="#0c2340">
+  <!-- After deploy, set og:image, twitter:image and og:url to absolute https URLs.
+       Replace assets/og-share.jpg with the official 1200×630 card (Padel & Help and Zona de Padel logos).
+       WhatsApp previews use these English tags. Open ?lang=fr or ?lang=es for the translated page. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Padel &amp; Help">
+  <meta property="og:title" content="Padel &amp; Help | Official B2B Platform of Zona de Padel">
+  <meta property="og:description" content="Discover Padel &amp; Help, the official B2B platform of Zona de Padel. Access professional padel equipment, competitive B2B prices and personalized support.">
+  <meta property="og:image" content="assets/og-share.jpg">
+  <meta property="og:image:alt" content="Padel &amp; Help, the official B2B platform of Zona de Padel">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Padel &amp; Help | Official B2B Platform of Zona de Padel">
+  <meta name="twitter:description" content="Discover Padel &amp; Help, the official B2B platform of Zona de Padel. Access professional padel equipment, competitive B2B prices and personalized support.">
+  <meta name="twitter:image" content="assets/og-share.jpg">
+  <!-- Make these absolute after the domain is known. -->
+  <link rel="alternate" hreflang="en" href="?lang=en">
+  <link rel="alternate" hreflang="fr" href="?lang=fr">
+  <link rel="alternate" hreflang="es" href="?lang=es">
+  <link rel="alternate" hreflang="x-default" href="./">
+  <link rel="icon" href="assets/logo-padelandhelp.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      var allowed = { en: 1, fr: 1, es: 1 };
+      var params = new URLSearchParams(location.search);
+      var queryLang = params.get("lang");
+      var stored = null;
+      try { stored = localStorage.getItem("ph-lang"); } catch (e) {}
+      var lang = allowed[queryLang] ? queryLang : (allowed[stored] ? stored : "en");
+      var titles = {
+        en: "Padel & Help | Official B2B Platform of Zona de Padel",
+        fr: "Padel & Help | Plateforme B2B officielle de Zona de Padel",
+        es: "Padel & Help | Plataforma B2B oficial de Zona de Padel"
+      };
+      var descriptions = {
+        en: "Discover Padel & Help, the official B2B platform of Zona de Padel. Access professional padel equipment, competitive B2B prices and personalized support.",
+        fr: "Découvrez Padel & Help, la plateforme B2B officielle de Zona de Padel. Accédez au matériel de padel professionnel, à des prix B2B compétitifs et à un accompagnement personnalisé.",
+        es: "Descubre Padel & Help, la plataforma B2B oficial de Zona de Padel. Accede a material de pádel profesional, precios B2B competitivos y asistencia personalizada."
+      };
+      document.documentElement.lang = lang;
+      document.title = titles[lang];
+      var desc = document.querySelector('meta[name="description"]');
+      if (desc) desc.setAttribute("content", descriptions[lang]);
+    })();
+  </script>
+  <style>
+    html[lang="en"] [data-lang]:not([data-lang="en"]),
+    html[lang="fr"] [data-lang]:not([data-lang="fr"]),
+    html[lang="es"] [data-lang]:not([data-lang="es"]) { display: none !important; }
+  </style>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">
+    <span data-lang="en">Skip to content</span>
+    <span data-lang="fr">Aller au contenu</span>
+    <span data-lang="es">Saltar al contenido</span>
+  </a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#home">
+        <span class="brand-logo">
+          <img src="assets/logo-padelandhelp.png" alt="Padel &amp; Help" width="1000" height="1000">
+        </span>
+        <span class="brand-tag">
+          <span data-lang="en">Official B2B platform of Zona de Padel</span>
+          <span data-lang="fr">Plateforme B2B officielle de Zona de Padel</span>
+          <span data-lang="es">Plataforma B2B oficial de Zona de Padel</span>
+        </span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu" aria-label="Primary">
+        <a class="nav-link" href="#home">
+          <span data-lang="en">Home</span>
+          <span data-lang="fr">Accueil</span>
+          <span data-lang="es">Inicio</span>
+        </a>
+        <a class="nav-link" href="#offer">
+          <span data-lang="en">What We Offer</span>
+          <span data-lang="fr">Notre offre</span>
+          <span data-lang="es">Qué ofrecemos</span>
+        </a>
+        <a class="nav-link" href="#how-it-works">
+          <span data-lang="en">How It Works</span>
+          <span data-lang="fr">Comment ça marche</span>
+          <span data-lang="es">Cómo funciona</span>
+        </a>
+        <a class="nav-link" href="#contact">
+          <span data-lang="en">Contact</span>
+          <span data-lang="fr">Contact</span>
+          <span data-lang="es">Contacto</span>
+        </a>
+      </nav>
+
+      <div class="nav-tools">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" data-set-lang="en" aria-pressed="false" aria-label="English" title="English">
+            <svg viewBox="0 0 640 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <path fill="#012169" d="M0 0h640v480H0z"/>
+              <path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0h75z"/>
+              <path fill="#C8102E" d="m424 281 216 159v40L369 281h55zm-184 20 6 35L54 480H0l240-179zM640 0v3L391 191l2-44L590 0h50zM0 0l239 176h-60L0 42V0z"/>
+              <path fill="#FFF" d="M241 0v480h160V0H241zM0 160v160h640V160H0z"/>
+              <path fill="#C8102E" d="M0 193v96h640v-96H0zM273 0v480h96V0h-96z"/>
+            </svg>
+          </button>
+          <button type="button" class="lang-btn" data-set-lang="fr" aria-pressed="false" aria-label="Français" title="Français">
+            <svg viewBox="0 0 3 2" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <path fill="#002654" d="M0 0h1v2H0z"/>
+              <path fill="#fff" d="M1 0h1v2H1z"/>
+              <path fill="#CE1126" d="M2 0h1v2H2z"/>
+            </svg>
+          </button>
+          <button type="button" class="lang-btn" data-set-lang="es" aria-pressed="false" aria-label="Español" title="Español">
+            <svg viewBox="0 0 3 2" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <path fill="#AA151B" d="M0 0h3v2H0z"/>
+              <path fill="#F1BF00" d="M0 .5h3v1H0z"/>
+            </svg>
+          </button>
+        </div>
+        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+          <svg class="icon-open" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <!-- Hero photo: assets/hero-court.jpg is 736×981. Replace it with a larger court photograph when one is available. -->
+      <div class="container">
+      <div class="hero-content">
+        <img class="hero-mark" src="assets/logo-zonadepadel.png" alt="Zona de Padel" width="348" height="350">
+        <p class="eyebrow">
+          <span data-lang="en">PADEL &amp; HELP — BY ZONA DE PADEL</span>
+          <span data-lang="fr">PADEL &amp; HELP — PAR ZONA DE PADEL</span>
+          <span data-lang="es">PADEL &amp; HELP — DE ZONA DE PADEL</span>
+        </p>
+        <h1>
+          <span data-lang="en">Your Padel Business, Made Easier.</span>
+          <span data-lang="fr">Votre activité de padel, plus simple.</span>
+          <span data-lang="es">Tu negocio de pádel, más fácil.</span>
+        </h1>
+        <p class="hero-sub">
+          <span data-lang="en">The Official B2B Platform of Zona de Padel.</span>
+          <span data-lang="fr">La plateforme B2B officielle de Zona de Padel.</span>
+          <span data-lang="es">La plataforma B2B oficial de Zona de Padel.</span>
+        </p>
+        <p class="hero-lead" data-lang="en">Zona de Padel is a Spain-based distributor supplying padel equipment to clubs and specialized retailers worldwide. Through Padel &amp; Help, our dedicated B2B platform, we offer access to leading padel brands, professional buying prices and personalized commercial assistance.</p>
+        <p class="hero-lead" data-lang="fr">Zona de Padel est un distributeur basé en Espagne qui fournit du matériel de padel aux clubs et aux détaillants spécialisés dans le monde entier. Avec Padel &amp; Help, notre plateforme B2B dédiée, vous accédez aux grandes marques de padel, à des tarifs professionnels et à un accompagnement commercial personnalisé.</p>
+        <p class="hero-lead" data-lang="es">Zona de Padel es un distribuidor con sede en España que suministra material de pádel a clubes y tiendas especializadas en todo el mundo. A través de Padel &amp; Help, nuestra plataforma B2B, ofrecemos acceso a las principales marcas de pádel, precios profesionales de compra y asistencia comercial personalizada.</p>
+        <a class="btn btn-light" href="#account-form">
+          <span data-lang="en">Create B2B Account</span>
+          <span data-lang="fr">Créer un compte B2B</span>
+          <span data-lang="es">Crear cuenta B2B</span>
+        </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section offer" id="offer">
+      <div class="container">
+        <div class="section-intro">
+          <h2>
+            <span data-lang="en">Everything Your Padel Business Needs</span>
+            <span data-lang="fr">Tout ce dont votre activité de padel a besoin</span>
+            <span data-lang="es">Todo lo que tu negocio de pádel necesita</span>
+          </h2>
+          <p data-lang="en">Products, technology and personalized assistance — all in one place.</p>
+          <p data-lang="fr">Produits, technologie et assistance personnalisée — au même endroit.</p>
+          <p data-lang="es">Productos, tecnología y asistencia personalizada, en un solo lugar.</p>
+        </div>
+        <div class="offer-grid">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M14.8 13.2 19.2 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+                <ellipse cx="10" cy="9.2" rx="5.2" ry="6.2" transform="rotate(-28 10 9.2)" fill="none" stroke="currentColor" stroke-width="1.75"/>
+                <path d="M8.2 8.2h3.2M9.8 6.4v3.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>
+              <span data-lang="en">Padel Equipment</span>
+              <span data-lang="fr">Matériel de padel</span>
+              <span data-lang="es">Material de pádel</span>
+            </h3>
+            <p data-lang="en">Access a wide range of padel rackets, balls, bags, shoes, apparel and equipment for padel clubs from leading brands.</p>
+            <p data-lang="fr">Accédez à un large choix de raquettes, balles, sacs, chaussures, vêtements et équipements pour clubs de padel, auprès des grandes marques.</p>
+            <p data-lang="es">Accede a una amplia gama de palas, pelotas, paleteros, zapatillas, ropa y equipamiento para clubes de pádel de las principales marcas.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/>
+                <path d="M8 20.5h8M12 17v3.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>
+              <span data-lang="en">B2B Online Platform</span>
+              <span data-lang="fr">Plateforme B2B en ligne</span>
+              <span data-lang="es">Plataforma B2B en línea</span>
+            </h3>
+            <p data-lang="en">Browse our product catalog, consult your available B2B prices, check stock, place orders, manage shipments and handle warranties through our dedicated platform.</p>
+            <p data-lang="fr">Parcourez notre catalogue, consultez vos prix B2B, vérifiez les stocks, passez commande, suivez les expéditions et gérez les garanties depuis notre plateforme dédiée.</p>
+            <p data-lang="es">Consulta el catálogo, tus precios B2B, el stock disponible, realiza pedidos, gestiona envíos y garantías desde nuestra plataforma.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="5.5" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/>
+                <path d="M3 10h18M7 14.5h4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>
+              <span data-lang="en">Flexible Payments</span>
+              <span data-lang="fr">Paiements flexibles</span>
+              <span data-lang="es">Pagos flexibles</span>
+            </h3>
+            <p data-lang="en">Pay by bank transfer or credit card, directly through the website or with the assistance of your sales manager.</p>
+            <p data-lang="fr">Payez par virement ou par carte bancaire, directement sur le site ou avec l’aide de votre responsable commercial.</p>
+            <p data-lang="es">Paga por transferencia o tarjeta, directamente en la web o con la ayuda de tu responsable comercial.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M3 7h11v8H3zM14 10h4.2L21 13.2V15h-7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+                <circle cx="7" cy="17.5" r="1.4" fill="none" stroke="currentColor" stroke-width="1.75"/>
+                <circle cx="17" cy="17.5" r="1.4" fill="none" stroke="currentColor" stroke-width="1.75"/>
+              </svg>
+            </div>
+            <h3>
+              <span data-lang="en">Fast Delivery</span>
+              <span data-lang="fr">Livraison rapide</span>
+              <span data-lang="es">Entrega rápida</span>
+            </h3>
+            <p data-lang="en">Once payment is confirmed, shipping typically takes 2–5 business days, depending on your destination.</p>
+            <p data-lang="fr">Une fois le paiement confirmé, l’expédition prend généralement de 2 à 5 jours ouvrés, selon votre destination.</p>
+            <p data-lang="es">Una vez confirmado el pago, el envío suele tardar entre 2 y 5 días laborables, según el destino.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 13a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+                <rect x="3" y="13" width="4" height="6" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.75"/>
+                <rect x="17" y="13" width="4" height="6" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.75"/>
+                <path d="M21 16.5v1.2A3.3 3.3 0 0 1 17.7 21H14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>
+              <span data-lang="en">Personal Assistance</span>
+              <span data-lang="fr">Assistance personnelle</span>
+              <span data-lang="es">Asistencia personal</span>
+            </h3>
+            <p data-lang="en">Your dedicated sales manager is available to assist you with product recommendations, pricing, orders, deliveries and any questions you may have.</p>
+            <p data-lang="fr">Votre responsable commercial dédié vous accompagne pour les recommandations produits, les tarifs, les commandes, les livraisons et toutes vos questions.</p>
+            <p data-lang="es">Tu responsable comercial te ayuda con recomendaciones de producto, precios, pedidos, entregas y cualquier consulta.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section how" id="how-it-works">
+      <div class="container">
+        <div class="section-intro">
+          <h2>
+            <span data-lang="en">How Does Padel &amp; Help Work?</span>
+            <span data-lang="fr">Comment fonctionne Padel &amp; Help ?</span>
+            <span data-lang="es">¿Cómo funciona Padel &amp; Help?</span>
+          </h2>
+          <p data-lang="en">Getting started is easy. We'll guide you through your first order, and then you can manage your purchases independently.</p>
+          <p data-lang="fr">Commencer est simple. Nous vous accompagnons pour votre première commande, puis vous gérez vos achats en autonomie.</p>
+          <p data-lang="es">Empezar es sencillo. Te guiamos en tu primer pedido y, a partir de ahí, puedes gestionar tus compras por tu cuenta.</p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <div class="step-index" aria-hidden="true">1</div>
+            <div class="step-card">
+              <h3>
+                <span data-lang="en">Create Your B2B Account</span>
+                <span data-lang="fr">Créez votre compte B2B</span>
+                <span data-lang="es">Crea tu cuenta B2B</span>
+              </h3>
+              <p data-lang="en">Contact your dedicated sales manager to request access to Padel &amp; Help. Once your account is set up, you can start exploring our product catalog.</p>
+              <p data-lang="fr">Contactez votre responsable commercial pour demander l’accès à Padel &amp; Help. Une fois le compte créé, vous pouvez explorer notre catalogue.</p>
+              <p data-lang="es">Contacta con tu responsable comercial para solicitar acceso a Padel &amp; Help. Cuando tu cuenta esté lista, podrás explorar el catálogo.</p>
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="step-index" aria-hidden="true">2</div>
+            <div class="step-card">
+              <h3>
+                <span data-lang="en">Your First Order — We Do It Together</span>
+                <span data-lang="fr">Votre première commande — ensemble</span>
+                <span data-lang="es">Tu primer pedido — lo hacemos juntos</span>
+              </h3>
+              <p data-lang="en">For your first order, we'll guide you through the purchasing process.</p>
+              <p data-lang="fr">Pour votre première commande, nous vous guidons tout au long du processus d’achat.</p>
+              <p data-lang="es">En tu primer pedido te acompañamos durante todo el proceso de compra.</p>
+              <p data-lang="en">You'll be able to see your buying prices for all products except rackets. To protect our B2B pricing from competitors, racket prices are initially hidden.</p>
+              <p data-lang="fr">Vous verrez vos prix d’achat pour tous les produits, sauf les raquettes. Afin de protéger nos tarifs B2B face à la concurrence, les prix des raquettes sont masqués au départ.</p>
+              <p data-lang="es">Podrás ver tus precios de compra en todos los productos excepto en las palas. Para proteger nuestros precios B2B frente a la competencia, los precios de las palas están ocultos al principio.</p>
+              <p data-lang="en">Interested in a particular racket? Simply contact your sales manager and he will give you your B2B price.</p>
+              <p data-lang="fr">Une raquette en particulier vous intéresse ? Contactez votre responsable commercial et il vous communiquera votre prix B2B.</p>
+              <p data-lang="es">¿Te interesa una pala en concreto? Contacta con tu responsable comercial y él te dará tu precio B2B.</p>
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="step-index" aria-hidden="true">3</div>
+            <div class="step-card">
+              <h3>
+                <span data-lang="en">Shop Independently, With Our Support</span>
+                <span data-lang="fr">Achetez en autonomie, avec notre soutien</span>
+                <span data-lang="es">Compra por tu cuenta, con nuestro apoyo</span>
+              </h3>
+              <p data-lang="en">Once you become a client, your racket buying prices will be activated in your B2B account.</p>
+              <p data-lang="fr">Dès que vous devenez client, les prix d’achat des raquettes sont activés sur votre compte B2B.</p>
+              <p data-lang="es">Cuando ya eres cliente, los precios de compra de las palas se activan en tu cuenta B2B.</p>
+              <p data-lang="en">You can then place orders directly through the platform, check stock availability and manage your purchases independently.</p>
+              <p data-lang="fr">Vous pouvez alors commander directement sur la plateforme, consulter les stocks et gérer vos achats en autonomie.</p>
+              <p data-lang="es">Podrás hacer pedidos directamente en la plataforma, consultar el stock y gestionar tus compras de forma independiente.</p>
+              <p data-lang="en">Your dedicated sales manager will remain your main contact. If you need a better price on any product, simply ask and we'll check what we can offer.</p>
+              <p data-lang="fr">Votre responsable commercial reste votre interlocuteur principal. Si vous souhaitez un meilleur prix sur un produit, demandez-le-nous et nous verrons ce que nous pouvons vous proposer.</p>
+              <p data-lang="es">Tu responsable comercial seguirá siendo tu contacto principal. Si necesitas un mejor precio en algún producto, solo tienes que pedirlo y veremos qué podemos ofrecerte.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="steps-cta">
+          <a class="btn" href="#account-form">
+            <span data-lang="en">Create B2B Account</span>
+            <span data-lang="fr">Créer un compte B2B</span>
+            <span data-lang="es">Crear cuenta B2B</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="section-intro">
+          <h2>
+            <span data-lang="en">Let's Work Together</span>
+            <span data-lang="fr">Travaillons ensemble</span>
+            <span data-lang="es">Trabajemos juntos</span>
+          </h2>
+          <p data-lang="en">Ready to join Padel &amp; Help? Request your B2B account or contact us directly. We'll be happy to help you get started.</p>
+          <p data-lang="fr">Prêt à rejoindre Padel &amp; Help ? Demandez votre compte B2B ou contactez-nous directement. Nous serons ravis de vous accompagner.</p>
+          <p data-lang="es">¿Listo para unirte a Padel &amp; Help? Solicita tu cuenta B2B o contáctanos directamente. Estaremos encantados de ayudarte a empezar.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card" id="account-form">
+            <h3 id="form-title">
+              <span data-lang="en">Create Your B2B Account</span>
+              <span data-lang="fr">Créez votre compte B2B</span>
+              <span data-lang="es">Crea tu cuenta B2B</span>
+            </h3>
+            <p class="lede" data-lang="en">Fill in your business details and we'll contact you to help you get started.</p>
+            <p class="lede" data-lang="fr">Indiquez les coordonnées de votre entreprise et nous vous contacterons pour vous aider à démarrer.</p>
+            <p class="lede" data-lang="es">Completa los datos de tu negocio y te contactaremos para ayudarte a empezar.</p>
+
+            <form id="b2b-form" novalidate aria-labelledby="form-title">
+              <div class="honeypot" aria-hidden="true">
+                <label for="company-website">Company website</label>
+                <input id="company-website" name="_honey" type="text" tabindex="-1" autocomplete="off">
+              </div>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="first-name">
+                    <span data-lang="en">First name</span>
+                    <span data-lang="fr">Prénom</span>
+                    <span data-lang="es">Nombre</span>
+                  </label>
+                  <input id="first-name" name="first-name" type="text" autocomplete="given-name" aria-required="true">
+                  <p class="field-error" id="first-name-error"></p>
+                </div>
+                <div class="field">
+                  <label for="last-name">
+                    <span data-lang="en">Last name</span>
+                    <span data-lang="fr">Nom</span>
+                    <span data-lang="es">Apellidos</span>
+                  </label>
+                  <input id="last-name" name="last-name" type="text" autocomplete="family-name" aria-required="true">
+                  <p class="field-error" id="last-name-error"></p>
+                </div>
+                <div class="field">
+                  <label for="vat-number">
+                    <span data-lang="en">Company EU VAT number</span>
+                    <span data-lang="fr">Numéro de TVA intracommunautaire</span>
+                    <span data-lang="es">NIF-IVA intracomunitario</span>
+                  </label>
+                  <input id="vat-number" name="vat-number" type="text" autocomplete="off" aria-required="true">
+                  <p class="field-error" id="vat-number-error"></p>
+                </div>
+                <div class="field">
+                  <label for="company-name">
+                    <span data-lang="en">Company name</span>
+                    <span data-lang="fr">Nom de l’entreprise</span>
+                    <span data-lang="es">Nombre de la empresa</span>
+                  </label>
+                  <input id="company-name" name="company-name" type="text" autocomplete="organization" aria-required="true">
+                  <p class="field-error" id="company-name-error"></p>
+                </div>
+                <div class="field field-full">
+                  <label for="address">
+                    <span data-lang="en">Address</span>
+                    <span data-lang="fr">Adresse</span>
+                    <span data-lang="es">Dirección</span>
+                  </label>
+                  <input id="address" name="address" type="text" autocomplete="street-address" aria-required="true">
+                  <p class="field-error" id="address-error"></p>
+                </div>
+                <div class="field">
+                  <label for="country">
+                    <span data-lang="en">Country</span>
+                    <span data-lang="fr">Pays</span>
+                    <span data-lang="es">País</span>
+                  </label>
+                  <input id="country" name="country" type="text" autocomplete="country-name" aria-required="true">
+                  <p class="field-error" id="country-error"></p>
+                </div>
+                <div class="field">
+                  <label for="state">
+                    <span data-lang="en">State</span>
+                    <span data-lang="fr">État</span>
+                    <span data-lang="es">Estado</span>
+                  </label>
+                  <input id="state" name="state" type="text" autocomplete="address-level1" aria-required="true">
+                  <p class="field-error" id="state-error"></p>
+                </div>
+                <div class="field">
+                  <label for="province">
+                    <span data-lang="en">Province</span>
+                    <span data-lang="fr">Province</span>
+                    <span data-lang="es">Provincia</span>
+                  </label>
+                  <input id="province" name="province" type="text" autocomplete="address-level3" aria-required="true">
+                  <p class="field-error" id="province-error"></p>
+                </div>
+                <div class="field">
+                  <label for="zip">
+                    <span data-lang="en">ZIP code</span>
+                    <span data-lang="fr">Code postal</span>
+                    <span data-lang="es">Código postal</span>
+                  </label>
+                  <input id="zip" name="zip" type="text" autocomplete="postal-code" aria-required="true">
+                  <p class="field-error" id="zip-error"></p>
+                </div>
+                <div class="field">
+                  <label for="city">
+                    <span data-lang="en">City</span>
+                    <span data-lang="fr">Ville</span>
+                    <span data-lang="es">Ciudad</span>
+                  </label>
+                  <input id="city" name="city" type="text" autocomplete="address-level2" aria-required="true">
+                  <p class="field-error" id="city-error"></p>
+                </div>
+                <div class="field">
+                  <label for="phone">
+                    <span data-lang="en">Phone number</span>
+                    <span data-lang="fr">Téléphone</span>
+                    <span data-lang="es">Teléfono</span>
+                  </label>
+                  <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-required="true">
+                  <p class="field-error" id="phone-error"></p>
+                </div>
+                <div class="field field-full">
+                  <label for="email">
+                    <span data-lang="en">Email</span>
+                    <span data-lang="fr">E-mail</span>
+                    <span data-lang="es">Correo electrónico</span>
+                  </label>
+                  <input id="email" name="email" type="email" autocomplete="email" aria-required="true">
+                  <p class="field-error" id="email-error"></p>
+                </div>
+                <div class="field field-full">
+                  <label class="consent" for="consent">
+                    <input type="checkbox" id="consent" name="consent" aria-required="true">
+                    <span>
+                      <span data-lang="en">I agree to be contacted about this B2B account request.</span>
+                      <span data-lang="fr">J’accepte que vous me contactiez au sujet de cette demande de compte B2B.</span>
+                      <span data-lang="es">Acepto que me contacten sobre esta solicitud de cuenta B2B.</span>
+                    </span>
+                  </label>
+                  <!-- Replace this notice with the published privacy policy URL before launch. -->
+                  <p class="privacy-note" data-lang="en">The full privacy policy will be linked here before launch.</p>
+                  <p class="privacy-note" data-lang="fr">La politique de confidentialité complète sera publiée avant le lancement.</p>
+                  <p class="privacy-note" data-lang="es">La política de privacidad completa se publicará antes del lanzamiento.</p>
+                  <p class="field-error" id="consent-error"></p>
+                </div>
+                <div class="field field-full">
+                  <button class="btn btn-submit" type="submit">
+                    <span data-lang="en">Request B2B Account</span>
+                    <span data-lang="fr">Demander un compte B2B</span>
+                    <span data-lang="es">Solicitar cuenta B2B</span>
+                  </button>
+                  <p class="form-help" data-lang="en">Your details are emailed to our B2B team at b2beu@zonadepadel.com when you submit this form.</p>
+                  <p class="form-help" data-lang="fr">Vos coordonnées sont envoyées par e-mail à notre équipe B2B, à b2beu@zonadepadel.com, lorsque vous envoyez ce formulaire.</p>
+                  <p class="form-help" data-lang="es">Tus datos se envían por correo a nuestro equipo B2B, a b2beu@zonadepadel.com, cuando envías este formulario.</p>
+                  <p class="form-success" data-form-success hidden>
+                    <span data-lang="en">Your sales manager will contact you by email and WhatsApp once the account is created. You can also write to the details on the right.</span>
+                    <span data-lang="fr">Votre responsable commercial vous contactera par e-mail et WhatsApp dès que le compte sera créé. Vous pouvez aussi écrire aux coordonnées à droite.</span>
+                    <span data-lang="es">Tu responsable comercial te contactará por email y WhatsApp cuando la cuenta esté creada. También puedes escribirle a los datos de la derecha.</span>
+                  </p>
+                  <p class="form-fail" data-form-fail hidden>
+                    <span data-lang="en">We could not send your request. Please try again, or use Send an Email.</span>
+                    <span data-lang="fr">Nous n’avons pas pu envoyer votre demande. Réessayez, ou utilisez « Envoyer un e-mail ».</span>
+                    <span data-lang="es">No hemos podido enviar tu solicitud. Inténtalo de nuevo o usa «Enviar un correo».</span>
+                  </p>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <aside class="direct-card">
+            <h3>
+              <span data-lang="en">Prefer to Contact Us Directly?</span>
+              <span data-lang="fr">Vous préférez nous contacter directement ?</span>
+              <span data-lang="es">¿Prefieres contactarnos directamente?</span>
+            </h3>
+            <p class="lede" data-lang="en">Have a question about our products, prices or B2B platform? Get in touch directly with your dedicated sales manager.</p>
+            <p class="lede" data-lang="fr">Une question sur nos produits, nos prix ou la plateforme B2B ? Contactez directement votre responsable commercial.</p>
+            <p class="lede" data-lang="es">¿Tienes alguna pregunta sobre nuestros productos, precios o la plataforma B2B? Contacta directamente con tu responsable comercial.</p>
+
+            <div class="direct-actions">
+              <div>
+                <div class="channel">
+                  <div class="channel-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/>
+                      <path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4>
+                      <span data-lang="en">Email Us</span>
+                      <span data-lang="fr">Nous écrire</span>
+                      <span data-lang="es">Escríbenos</span>
+                    </h4>
+                    <a class="channel-value" data-email-link href="mailto:b2beu@zonadepadel.com?subject=Padel%20%26%20Help%20%E2%80%94%20B2B%20Enquiry">b2beu@zonadepadel.com</a>
+                  </div>
+                </div>
+                <a class="btn btn-light" data-email-link href="mailto:b2beu@zonadepadel.com?subject=Padel%20%26%20Help%20%E2%80%94%20B2B%20Enquiry">
+                  <span data-lang="en">Send an Email</span>
+                  <span data-lang="fr">Envoyer un e-mail</span>
+                  <span data-lang="es">Enviar un correo</span>
+                </a>
+              </div>
+
+              <div>
+                <div class="channel">
+                  <div class="channel-icon wa" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M12.04 2C6.58 2 2.15 6.4 2.15 11.83c0 1.74.46 3.44 1.34 4.94L2 22l5.39-1.41a10 10 0 0 0 4.65 1.18h.01c5.46 0 9.89-4.4 9.89-9.83C21.93 6.4 17.5 2 12.04 2Zm5.76 14.05c-.24.67-1.4 1.3-1.94 1.38-.5.07-1.13.11-1.81-.11-.42-.14-.95-.31-1.64-.61-2.86-1.24-4.73-4.12-4.88-4.31-.14-.19-1.15-1.53-1.15-2.93 0-1.4.73-2.08.99-2.37.26-.28.57-.35.76-.35h.54c.18 0 .41-.07.64.49.24.57.81 1.99.88 2.14.07.14.12.31.02.5-.1.2-.14.32-.28.49-.14.16-.3.37-.42.49-.14.14-.28.3-.12.57.16.27.7 1.15 1.5 1.87 1.04.92 1.91 1.2 2.18 1.34.28.14.44.12.6-.07.17-.19.7-.81.89-1.09.18-.28.37-.23.62-.14.26.1 1.63.77 1.91.91.28.14.47.21.53.33.07.11.07.67-.17 1.35Z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4>WhatsApp</h4>
+                    <p class="channel-value" data-whatsapp-display>+34 624036927</p>
+                  </div>
+                </div>
+                <a class="btn btn-whatsapp" data-whatsapp href="https://wa.me/34624036927?text=Hello!%20I%20would%20like%20to%20know%20more%20about%20Padel%20%26%20Help%20and%20your%20B2B%20services." target="_blank" rel="noopener noreferrer">
+                  <span data-lang="en">Chat on WhatsApp</span>
+                  <span data-lang="fr">Discuter sur WhatsApp</span>
+                  <span data-lang="es">Chatear por WhatsApp</span>
+                </a>
+                <p class="wa-note" id="whatsapp-note" data-whatsapp-note hidden>
+                  <span data-lang="en">WhatsApp will be available once our sales number is added.</span>
+                  <span data-lang="fr">WhatsApp sera disponible dès que le numéro commercial sera ajouté.</span>
+                  <span data-lang="es">WhatsApp estará disponible cuando se añada el número comercial.</span>
+                </p>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <p class="legal">
+          <span data-lang="en">© 2026 Zona de Padel. Padel &amp; Help is the official B2B platform of Zona de Padel.</span>
+          <span data-lang="fr">© 2026 Zona de Padel. Padel &amp; Help est la plateforme B2B officielle de Zona de Padel.</span>
+          <span data-lang="es">© 2026 Zona de Padel. Padel &amp; Help es la plataforma B2B oficial de Zona de Padel.</span>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
