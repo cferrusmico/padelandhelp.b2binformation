@@ -238,120 +238,31 @@ function fieldValue(id) {
 const ACCOUNT_FIELDS = ["first-name", "last-name", "vat-number", "company-name", "address", "country", "state", "province", "zip", "city", "phone", "email"];
 
 /**
- * Sends the account request through FormSubmit, which delivers it to CONTACT_EMAIL.
- * The first request to a new inbox only sends FormSubmit's confirmation link.
- * Later requests include the form fields, using the labels currently on screen.
- * A success message is shown only after FormSubmit accepts the request.
+ * Opens the visitor's mail app with the account request already written.
+ * The message is not delivered until they press Send.
  */
-const SUBMIT_LABELS = {
-  idle: {
-    en: "Request B2B Account",
-    fr: "Demander un compte B2B",
-    es: "Solicitar cuenta B2B"
-  },
-  sending: {
-    en: "Sending...",
-    fr: "Envoi…",
-    es: "Enviando..."
-  },
-  sent: {
-    en: "Sent",
-    fr: "Envoyé",
-    es: "Enviado"
-  }
-};
+function openAccountEmail() {
+  const honey = form.querySelector("[name='_honey']");
+  if (honey && honey.value.trim()) return;
 
-function accountPayload() {
   const language = lang();
-  const payload = {
-    _subject: COPY[language].subjectAccount,
-    _template: "table",
-    _captcha: "false",
-    _url: window.location.href,
-    email: fieldValue("email")
-  };
+  const lines = [COPY[language].languageLine, ""];
 
   ACCOUNT_FIELDS.forEach((id) => {
     const label = visibleText(document.querySelector(`label[for="${id}"]`)) || id;
-    payload[label] = fieldValue(id);
+    lines.push(`${label}: ${fieldValue(id)}`);
   });
+  lines.push(COPY[language].consentLine);
 
-  const consentLabel = visibleText(document.querySelector('label[for="consent"]'));
-  const consentValue = COPY[language].consentLine.split(": ").pop();
-  if (consentLabel) payload[consentLabel] = consentValue;
-
-  const languageName = COPY[language].languageLine.split(":").pop().trim();
-  payload[COPY[language].languageLine.split(":")[0].trim()] = languageName;
-  return payload;
+  const subject = encodeURIComponent(COPY[language].subjectAccount);
+  const body = encodeURIComponent(lines.join("\r\n"));
+  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  setFormStatus("success");
 }
 
 function setFormStatus(state) {
   const success = document.querySelector("[data-form-success]");
-  const failure = document.querySelector("[data-form-fail]");
-  const showFailure = state === "fail" || state === "activate";
   if (success) success.hidden = state !== "success";
-  if (failure) failure.hidden = !showFailure;
-  if (!failure) return;
-  const generic = failure.querySelector("[data-fail='generic']");
-  const activate = failure.querySelector("[data-fail='activate']");
-  if (generic) generic.hidden = state === "activate";
-  if (activate) activate.hidden = state !== "activate";
-}
-
-function setSubmitLabel(state) {
-  const button = form.querySelector(".btn-submit");
-  if (!button) return;
-  const labels = SUBMIT_LABELS[state];
-  button.querySelectorAll("[data-lang]").forEach((span) => {
-    const language = span.getAttribute("data-lang");
-    if (labels[language]) span.textContent = labels[language];
-  });
-  button.disabled = state !== "idle";
-}
-
-function needsActivation(data) {
-  return /activ/i.test(String(data && data.message || ""));
-}
-
-async function sendAccountRequest() {
-  const honey = form.querySelector("[name='_honey']");
-  if (honey && honey.value.trim()) return;
-
-  setSubmitLabel("sending");
-  setFormStatus("pending");
-
-  try {
-    const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify(accountPayload())
-    });
-    let data = {};
-    try {
-      data = await response.json();
-    } catch (error) {
-      data = {};
-    }
-    if (response.ok && String(data.success) === "true") {
-      setFormStatus("success");
-      form.reset();
-      setSubmitLabel("sent");
-      return;
-    }
-    if (needsActivation(data)) {
-      setFormStatus("activate");
-      setSubmitLabel("idle");
-      return;
-    }
-    setFormStatus("fail");
-    setSubmitLabel("idle");
-  } catch (error) {
-    setFormStatus("fail");
-    setSubmitLabel("idle");
-  }
 }
 
 function validateForm() {
@@ -448,7 +359,7 @@ function init() {
         setFormStatus("pending");
         return;
       }
-      sendAccountRequest();
+      openAccountEmail();
     });
   }
 
