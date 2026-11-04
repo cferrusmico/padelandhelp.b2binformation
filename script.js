@@ -2,6 +2,7 @@
    This file is loaded at the end of body. */
 
 const CONTACT_EMAIL = "b2beu@zonadepadel.com";
+const WEB3FORMS_ACCESS_KEY = "085f4001-9b12-4e6f-964b-4386490b0ae5";
 
 /* International digits only, with no plus sign or spaces. */
 const WHATSAPP_NUMBER = "34624036927";
@@ -237,32 +238,108 @@ function fieldValue(id) {
 
 const ACCOUNT_FIELDS = ["first-name", "last-name", "vat-number", "company-name", "address", "country", "state", "province", "zip", "city", "phone", "email"];
 
-/**
- * Opens the visitor's mail app with the account request already written.
- * The message is not delivered until they press Send.
- */
-function openAccountEmail() {
-  const honey = form.querySelector("[name='_honey']");
-  if (honey && honey.value.trim()) return;
+const SUBMIT_LABELS = {
+  idle: {
+    en: "Request B2B Account",
+    fr: "Demander un compte B2B",
+    es: "Solicitar cuenta B2B"
+  },
+  sending: {
+    en: "Sending...",
+    fr: "Envoi…",
+    es: "Enviando..."
+  },
+  sent: {
+    en: "Sent",
+    fr: "Envoyé",
+    es: "Enviado"
+  }
+};
 
+function accountPayload() {
   const language = lang();
-  const lines = [COPY[language].languageLine, ""];
+  const payload = {
+    access_key: WEB3FORMS_ACCESS_KEY,
+    subject: COPY[language].subjectAccount,
+    email: fieldValue("email"),
+    from_name: [fieldValue("first-name"), fieldValue("last-name")].filter(Boolean).join(" ")
+  };
 
   ACCOUNT_FIELDS.forEach((id) => {
     const label = visibleText(document.querySelector(`label[for="${id}"]`)) || id;
-    lines.push(`${label}: ${fieldValue(id)}`);
+    payload[label] = fieldValue(id);
   });
-  lines.push(COPY[language].consentLine);
 
-  const subject = encodeURIComponent(COPY[language].subjectAccount);
-  const body = encodeURIComponent(lines.join("\r\n"));
-  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-  setFormStatus("success");
+  const consentLabel = visibleText(document.querySelector('label[for="consent"]'));
+  if (consentLabel) payload[consentLabel] = COPY[language].consentLine.split(": ").pop();
+
+  const languageParts = COPY[language].languageLine.split(":");
+  payload[languageParts[0].trim()] = languageParts.slice(1).join(":").trim();
+  return payload;
 }
 
 function setFormStatus(state) {
   const success = document.querySelector("[data-form-success]");
+  const failure = document.querySelector("[data-form-fail]");
   if (success) success.hidden = state !== "success";
+  if (failure) failure.hidden = state !== "fail";
+}
+
+function setSubmitLabel(state) {
+  const button = form.querySelector(".btn-submit");
+  if (!button) return;
+  const labels = SUBMIT_LABELS[state];
+  button.querySelectorAll("[data-lang]").forEach((span) => {
+    const language = span.getAttribute("data-lang");
+    if (labels[language]) span.textContent = labels[language];
+  });
+  button.disabled = state !== "idle";
+}
+
+/**
+ * Posts the account request to Web3Forms, which emails CONTACT_EMAIL.
+ * Sent is shown only after Web3Forms accepts the request.
+ */
+async function sendAccountRequest() {
+  const honey = form.querySelector("[name='_honey']");
+  if (honey && honey.value.trim()) return;
+
+  if (!WEB3FORMS_ACCESS_KEY) {
+    setFormStatus("fail");
+    setSubmitLabel("idle");
+    return;
+  }
+
+  setSubmitLabel("sending");
+  setFormStatus("pending");
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(accountPayload())
+    });
+    let data = {};
+    try {
+      data = await response.json();
+    } catch (error) {
+      data = {};
+    }
+    if (response.ok && data.success === true) {
+      setFormStatus("success");
+      form.reset();
+      setSubmitLabel("sent");
+      return;
+    }
+    setFormStatus("fail");
+    setSubmitLabel("idle");
+  } catch (error) {
+    setFormStatus("fail");
+    setSubmitLabel("idle");
+  }
 }
 
 function validateForm() {
@@ -359,7 +436,7 @@ function init() {
         setFormStatus("pending");
         return;
       }
-      openAccountEmail();
+      sendAccountRequest();
     });
   }
 
