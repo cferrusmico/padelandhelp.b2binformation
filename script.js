@@ -135,31 +135,35 @@ function updateContacts() {
     link.href = mailto;
   });
 
-  const button = document.querySelector("[data-whatsapp]");
   const note = document.querySelector("[data-whatsapp-note]");
   const display = document.querySelector("[data-whatsapp-display]");
+  const buttons = document.querySelectorAll("[data-whatsapp]");
   const digits = whatsappDigits(WHATSAPP_NUMBER);
 
-  if (!button) return;
+  if (!buttons.length) return;
 
   if (!digits) {
-    button.removeAttribute("href");
-    button.removeAttribute("target");
-    button.setAttribute("aria-disabled", "true");
-    button.setAttribute("aria-describedby", "whatsapp-note");
-    button.classList.add("is-disabled");
+    buttons.forEach((button) => {
+      button.removeAttribute("href");
+      button.removeAttribute("target");
+      button.setAttribute("aria-disabled", "true");
+      button.setAttribute("aria-describedby", "whatsapp-note");
+      button.classList.add("is-disabled");
+    });
     if (note) note.hidden = false;
     if (display) display.textContent = WHATSAPP_DISPLAY;
     return;
   }
 
   const text = encodeURIComponent(COPY[language].whatsapp);
-  button.href = `https://wa.me/${digits}?text=${text}`;
-  button.target = "_blank";
-  button.rel = "noopener noreferrer";
-  button.removeAttribute("aria-disabled");
-  button.removeAttribute("aria-describedby");
-  button.classList.remove("is-disabled");
+  buttons.forEach((button) => {
+    button.href = `https://wa.me/${digits}?text=${text}`;
+    button.target = "_blank";
+    button.rel = "noopener noreferrer";
+    button.removeAttribute("aria-disabled");
+    button.removeAttribute("aria-describedby");
+    button.classList.remove("is-disabled");
+  });
   if (note) note.hidden = true;
   if (display) display.textContent = WHATSAPP_DISPLAY;
 }
@@ -440,12 +444,11 @@ function init() {
     });
   }
 
-  const whatsapp = document.querySelector("[data-whatsapp]");
-  if (whatsapp) {
+  document.querySelectorAll("[data-whatsapp]").forEach((whatsapp) => {
     whatsapp.addEventListener("click", (event) => {
       if (whatsapp.getAttribute("aria-disabled") === "true") event.preventDefault();
     });
-  }
+  });
 }
 
 init();

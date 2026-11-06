@@ -144,16 +144,6 @@ h4 {
   transform: translateY(-50%);
 }
 
-.brand-tag {
-  display: block;
-  max-width: 220px;
-  margin-top: 2px;
-  font-size: 11px;
-  line-height: 1.35;
-  font-weight: 600;
-  color: var(--muted);
-}
-
 .nav-menu {
   display: flex;
   align-items: center;
@@ -178,6 +168,60 @@ h4 {
   align-items: center;
   gap: 12px;
   flex: none;
+}
+
+.nav-contact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-icon {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--navy);
+  text-decoration: none;
+}
+
+.nav-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.nav-icon:hover {
+  background: #e7eef6;
+}
+
+.nav-icon-wa {
+  background: var(--wa);
+  color: var(--wa-ink);
+}
+
+.nav-icon-wa:hover {
+  background: #1ebe5a;
+}
+
+.nav-icon.is-disabled {
+  background: #b7d7c4;
+  color: #3d5c49;
+  cursor: not-allowed;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .lang-switch {
@@ -260,8 +304,60 @@ html[lang="es"] .lang-btn[data-set-lang="es"] {
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.btn:hover {
-  background: var(--navy);
+.btn-signin {
+  min-height: 40px;
+  padding: 8px 16px;
+  font-size: 0.92rem;
+  white-space: nowrap;
+}
+
+.reach {
+  padding: 48px 0;
+  background: var(--white);
+}
+
+.reach h2 {
+  margin: 0 0 18px;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.reach-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 18px 28px;
+}
+
+.reach-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--navy);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.reach-item:hover {
+  color: var(--blue);
+}
+
+.reach .channel-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: #e7f1f8;
+  color: var(--blue);
+}
+
+.reach .channel-icon svg {
+  width: 20px;
+  height: 20px;
 }
 
 .btn-light {
@@ -363,8 +459,12 @@ html[lang="es"] .lang-btn[data-set-lang="es"] {
   padding: 96px 0;
 }
 
+.section.reach {
+  padding: 48px 0;
+}
+
 .how {
-  background: var(--paper);
+  background: var(--white);
 }
 
 .section-intro {
@@ -451,60 +551,219 @@ html[lang="es"] .lang-btn[data-set-lang="es"] {
   margin-bottom: 0;
 }
 
+.how-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+}
+
+.how-intro {
+  max-width: none;
+  margin: 0 0 18px;
+  text-align: left;
+}
+
+.how-intro h2 {
+  font-size: clamp(1.55rem, 2.2vw, 2.15rem);
+}
+
+.how .contact-card {
+  width: 100%;
+}
+
+.how .contact-card h3 {
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+}
+
 .steps {
-  position: relative;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-.steps::before {
-  content: "";
-  position: absolute;
-  top: 22px;
-  left: 12%;
-  right: 12%;
-  height: 2px;
-  background: #d5dee8;
-}
-
-.step-index {
-  position: relative;
-  z-index: 1;
-  width: 46px;
-  height: 46px;
-  margin: 0 auto 16px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  border: 5px solid var(--paper);
-  background: var(--navy);
-  color: var(--white);
-  font-weight: 800;
-  font-size: 1.05rem;
-}
-
-.step-card {
-  padding: 26px 22px 28px;
-}
-
-.step-card h3 {
-  margin: 0 0 12px;
-  font-size: 1.28rem;
-}
-
-.steps-cta {
-  margin-top: 40px;
-  text-align: center;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
 }
 
 .step {
   display: flex;
-  flex-direction: column;
+  min-width: 0;
+}
+
+.step-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.step-index {
+  width: 28px;
+  height: 28px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+  font-weight: 800;
+  font-size: 0.85rem;
 }
 
 .step-card {
   flex: 1;
+  width: 100%;
+  padding: 16px 16px 18px;
+}
+
+.step-card h3 {
+  margin: 0;
+  min-width: 0;
+  font-size: 1.02rem;
+}
+
+.step-card p {
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.assist {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--paper);
+}
+
+.assist h2 {
+  margin: 0 0 4px;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.assist p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.assist-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.franchise {
+  background: var(--paper);
+}
+
+.franchise-head {
+  max-width: none;
+  margin: 0 0 28px;
+  text-align: left;
+}
+
+.franchise-kicker {
+  margin: 0 0 8px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.franchise-head h2 {
+  margin: 0 0 12px;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+}
+
+.franchise-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.franchise-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.franchise-card {
+  display: grid;
+  grid-template-columns: 380px minmax(0, 1fr);
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.franchise-card.is-corner {
+  grid-template-columns: minmax(0, 1fr) 380px;
+}
+
+.franchise-photo {
+  display: block;
+  width: 100%;
+  height: 240px;
+  min-height: 0;
+  max-height: 240px;
+  object-fit: cover;
+}
+
+.franchise-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px 22px;
+  border-left: 4px solid var(--navy);
+}
+
+.franchise-card.is-corner .franchise-photo {
+  order: 2;
+}
+
+.franchise-card.is-corner .franchise-body {
+  order: 1;
+  border-left: 0;
+  border-right: 4px solid var(--blue);
+}
+
+.model-label {
+  margin: 0 0 8px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.site-footer {
+  padding: 28px 0 36px;
+  background: var(--paper);
+}
+
+.footer-contact {
+  margin: 0 0 8px;
+  text-align: center;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.footer-contact a {
+  color: var(--navy);
+  text-decoration: none;
+}
+
+.footer-contact a:hover {
+  color: var(--blue);
+}
+
+.footer-contact span {
+  margin: 0 10px;
+  color: var(--muted);
+  font-weight: 500;
 }
 
 .contact {
@@ -751,20 +1010,17 @@ a.channel-value:hover {
 }
 
 .wa-note {
+  flex-basis: 100%;
   margin-top: 10px;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--muted);
 }
 
 .legal {
-  margin-top: 28px;
+  margin-top: 8px;
   text-align: center;
 }
 
 @media (max-width: 1180px) {
-  .brand-tag {
-    display: none;
-  }
-
   .nav-toggle {
     display: inline-grid;
   }
@@ -795,44 +1051,8 @@ a.channel-value:hover {
 }
 
 @media (max-width: 980px) {
-  .steps {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .steps::before {
-    display: none;
-  }
-
-  .step {
-    position: relative;
-    display: block;
-    padding: 0 0 20px 68px;
-  }
-
-  .step-index {
-    position: absolute;
-    left: 0;
-    top: 0;
-    margin: 0;
-  }
-
-  .step-card {
-    height: auto;
-  }
-
-  .step::after {
-    content: "";
-    position: absolute;
-    left: 22px;
-    top: 50px;
-    bottom: 0;
-    width: 2px;
-    background: #d5dee8;
-  }
-
-  .step:last-child::after {
-    display: none;
+  .franchise-head {
+    margin-bottom: 28px;
   }
 }
 
@@ -847,8 +1067,33 @@ a.channel-value:hover {
     grid-column: auto;
   }
 
-  .contact-grid {
+  .contact-grid,
+  .franchise-grid,
+  .steps,
+  .franchise-card,
+  .franchise-card.is-corner {
     grid-template-columns: 1fr;
+  }
+
+  .franchise-card.is-corner .franchise-photo,
+  .franchise-card.is-corner .franchise-body {
+    order: 0;
+  }
+
+  .franchise-body,
+  .franchise-card.is-corner .franchise-body {
+    border-right: 0;
+    border-left: 0;
+    border-top: 4px solid var(--navy);
+  }
+
+  .franchise-card.is-corner .franchise-body {
+    border-top-color: var(--blue);
+  }
+
+  .franchise-photo {
+    height: 200px;
+    max-height: 200px;
   }
 }
 
