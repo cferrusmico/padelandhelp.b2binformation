@@ -359,12 +359,28 @@ function validateForm() {
   return !firstInvalid;
 }
 
+function syncHeader() {
+  const header = document.querySelector(".site-header");
+  const hero = document.querySelector(".hero");
+  if (!header || !hero) return;
+
+  const update = () => {
+    const pastHero = hero.getBoundingClientRect().bottom <= header.offsetHeight;
+    header.classList.toggle("is-solid", pastHero);
+  };
+
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+}
+
 function init() {
   const params = new URLSearchParams(window.location.search);
   const queryLang = params.get("lang");
   const initial = lang();
   const updateUrl = queryLang ? queryLang !== initial : initial !== "en";
   applyLanguage(initial, { updateUrl });
+  syncHeader();
 
   document.querySelectorAll("[data-set-lang]").forEach((button) => {
     button.addEventListener("click", () => {

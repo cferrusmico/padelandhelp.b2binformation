@@ -60,7 +60,7 @@
     html[lang="fr"] [data-lang]:not([data-lang="fr"]),
     html[lang="es"] [data-lang]:not([data-lang="es"]) { display: none !important; }
   </style>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=orange-buttons">
 </head>
 <body>
   <a class="skip-link" href="#main">
@@ -71,12 +71,6 @@
 
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="#home">
-        <span class="brand-logo">
-          <img src="assets/logo-padelandhelp.png" alt="Padel &amp; Help" width="1000" height="1000">
-        </span>
-      </a>
-
       <nav class="nav-menu" id="nav-menu" aria-label="Primary">
         <a class="nav-link" href="#home">
           <span data-lang="en">Home</span>
@@ -152,30 +146,70 @@
       <!-- Hero photo: assets/hero-court.jpg is 736×981. Replace it with a larger court photograph when one is available. -->
       <div class="container">
       <div class="hero-content">
-        <img class="hero-mark" src="assets/logo-zonadepadel.png" alt="Zona de Padel" width="348" height="350">
-        <p class="eyebrow">
-          <span data-lang="en">PADEL &amp; HELP — BY ZONA DE PADEL</span>
-          <span data-lang="fr">PADEL &amp; HELP — PAR ZONA DE PADEL</span>
-          <span data-lang="es">PADEL &amp; HELP — DE ZONA DE PADEL</span>
-        </p>
+        <div class="hero-logos">
+          <img class="hero-logo-zona" src="assets/logo-zonadepadel.png" alt="Zona de Padel" width="348" height="350">
+          <span class="hero-logo-rule" aria-hidden="true"></span>
+          <img class="hero-logo-ph" src="assets/logo-padelandhelp-wordmark.png?v=white" alt="padelandhelp.com" width="1000" height="1000">
+        </div>
         <h1>
-          <span data-lang="en">Your Padel Business, Made Easier.</span>
-          <span data-lang="fr">Votre activité de padel, plus simple.</span>
-          <span data-lang="es">Tu negocio de pádel, más fácil.</span>
+          <span data-lang="en">Padel &amp; Help</span>
+          <span data-lang="fr">Padel &amp; Help</span>
+          <span data-lang="es">Padel &amp; Help</span>
         </h1>
         <p class="hero-sub">
-          <span data-lang="en">The Official B2B Platform of Zona de Padel.</span>
-          <span data-lang="fr">La plateforme B2B officielle de Zona de Padel.</span>
-          <span data-lang="es">La plataforma B2B oficial de Zona de Padel.</span>
+          <span data-lang="en">The <span class="hero-pill">B2B platform</span> by Zona de Padel</span>
+          <span data-lang="fr">La <span class="hero-pill">plateforme B2B</span> de Zona de Padel</span>
+          <span data-lang="es">La <span class="hero-pill">plataforma B2B</span> de Zona de Padel</span>
         </p>
-        <p class="hero-lead" data-lang="en">Zona de Padel is a Spain-based distributor supplying padel equipment to clubs and specialized retailers worldwide. Through Padel &amp; Help, our dedicated B2B platform, we offer access to leading padel brands, professional buying prices and personalized commercial assistance.</p>
-        <p class="hero-lead" data-lang="fr">Zona de Padel est un distributeur basé en Espagne qui fournit du matériel de padel aux clubs et aux détaillants spécialisés dans le monde entier. Avec Padel &amp; Help, notre plateforme B2B dédiée, vous accédez aux grandes marques de padel, à des tarifs professionnels et à un accompagnement commercial personnalisé.</p>
-        <p class="hero-lead" data-lang="es">Zona de Padel es un distribuidor con sede en España que suministra material de pádel a clubes y tiendas especializadas en todo el mundo. A través de Padel &amp; Help, nuestra plataforma B2B, ofrecemos acceso a las principales marcas de pádel, precios profesionales de compra y asistencia comercial personalizada.</p>
-        <a class="btn btn-light" href="#how-it-works">
-          <span data-lang="en">Create B2B Account</span>
+        <p class="hero-lead" data-lang="en">The professional portal for clubs, shops and padel businesses, with access to a wide range of products, exclusive conditions and personalised support.</p>
+        <p class="hero-lead" data-lang="fr">Le portail professionnel pour les clubs, les boutiques et les entreprises de padel, avec un large choix de produits, des conditions exclusives et un accompagnement personnalisé.</p>
+        <p class="hero-lead" data-lang="es">El portal profesional para clubes, tiendas y negocios de pádel, con una amplia gama de productos, condiciones exclusivas y asistencia personalizada.</p>
+        <a class="btn btn-hero" href="#how-it-works">
+          <span data-lang="en">Create B2B account</span>
           <span data-lang="fr">Créer un compte B2B</span>
           <span data-lang="es">Crear cuenta B2B</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </a>
+        <ul class="hero-points">
+          <li>
+            <span class="hero-point-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3.5 20.5 8 12 12.5 3.5 8 12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M3.5 8v8L12 20.5 20.5 16V8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M12 12.5V20.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+              </svg>
+            </span>
+            <span data-lang="en">Wide product range</span>
+            <span data-lang="fr">Large gamme de produits</span>
+            <span data-lang="es">Amplia gama de productos</span>
+          </li>
+          <li>
+            <span class="hero-point-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M20 13.2 12.8 20.4a1.8 1.8 0 0 1-2.5 0L3.6 13.7V4.2h9.5L20 11.1a1.8 1.8 0 0 1 0 2.1Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                <circle cx="8" cy="8.4" r="1.15" fill="currentColor"/>
+              </svg>
+            </span>
+            <span data-lang="en">Exclusive B2B conditions</span>
+            <span data-lang="fr">Conditions B2B exclusives</span>
+            <span data-lang="es">Condiciones B2B exclusivas</span>
+          </li>
+          <li>
+            <span class="hero-point-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4.5 13v-1a7.5 7.5 0 0 1 15 0v1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <rect x="3" y="13" width="4" height="6" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                <rect x="17" y="13" width="4" height="6" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M21 16.2v1.1A3.2 3.2 0 0 1 17.8 20.5H14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span data-lang="en">Personalised support</span>
+            <span data-lang="fr">Accompagnement personnalisé</span>
+            <span data-lang="es">Asistencia personalizada</span>
+          </li>
+        </ul>
         </div>
       </div>
     </section>
@@ -608,6 +642,6 @@
     </footer>
   </main>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=nav-overlay"></script>
 </body>
 </html>
