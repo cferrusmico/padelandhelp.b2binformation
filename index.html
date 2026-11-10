@@ -367,40 +367,31 @@
               </div>
               <div class="form-grid">
                 <div class="field">
-                  <label for="first-name">
-                    <span data-lang="en">First name</span>
-                    <span data-lang="fr">Prénom</span>
-                    <span data-lang="es">Nombre</span>
+                  <label for="full-name">
+                    <span data-lang="en">Full Name</span>
+                    <span data-lang="fr">Nom complet</span>
+                    <span data-lang="es">Nombre completo</span>
                   </label>
-                  <input id="first-name" name="first-name" type="text" autocomplete="given-name" aria-required="true">
-                  <p class="field-error" id="first-name-error"></p>
-                </div>
-                <div class="field">
-                  <label for="last-name">
-                    <span data-lang="en">Last name</span>
-                    <span data-lang="fr">Nom</span>
-                    <span data-lang="es">Apellidos</span>
-                  </label>
-                  <input id="last-name" name="last-name" type="text" autocomplete="family-name" aria-required="true">
-                  <p class="field-error" id="last-name-error"></p>
-                </div>
-                <div class="field">
-                  <label for="vat-number">
-                    <span data-lang="en">Company EU VAT number</span>
-                    <span data-lang="fr">Numéro de TVA intracommunautaire</span>
-                    <span data-lang="es">NIF-IVA intracomunitario</span>
-                  </label>
-                  <input id="vat-number" name="vat-number" type="text" autocomplete="off" aria-required="true">
-                  <p class="field-error" id="vat-number-error"></p>
+                  <input id="full-name" name="full-name" type="text" autocomplete="name" aria-required="true">
+                  <p class="field-error" id="full-name-error"></p>
                 </div>
                 <div class="field">
                   <label for="company-name">
-                    <span data-lang="en">Company name</span>
+                    <span data-lang="en">Company Name</span>
                     <span data-lang="fr">Nom de l’entreprise</span>
                     <span data-lang="es">Nombre de la empresa</span>
                   </label>
                   <input id="company-name" name="company-name" type="text" autocomplete="organization" aria-required="true">
                   <p class="field-error" id="company-name-error"></p>
+                </div>
+                <div class="field field-full">
+                  <label for="vat-number">
+                    <span data-lang="en">Company VAT number</span>
+                    <span data-lang="fr">Numéro de TVA de l’entreprise</span>
+                    <span data-lang="es">Número de IVA de la empresa</span>
+                  </label>
+                  <input id="vat-number" name="vat-number" type="text" autocomplete="off" aria-required="true">
+                  <p class="field-error" id="vat-number-error"></p>
                 </div>
                 <div class="field field-full">
                   <label for="address">
@@ -421,33 +412,6 @@
                   <p class="field-error" id="country-error"></p>
                 </div>
                 <div class="field">
-                  <label for="state">
-                    <span data-lang="en">State</span>
-                    <span data-lang="fr">État</span>
-                    <span data-lang="es">Estado</span>
-                  </label>
-                  <input id="state" name="state" type="text" autocomplete="address-level1" aria-required="true">
-                  <p class="field-error" id="state-error"></p>
-                </div>
-                <div class="field">
-                  <label for="province">
-                    <span data-lang="en">Province</span>
-                    <span data-lang="fr">Province</span>
-                    <span data-lang="es">Provincia</span>
-                  </label>
-                  <input id="province" name="province" type="text" autocomplete="address-level3" aria-required="true">
-                  <p class="field-error" id="province-error"></p>
-                </div>
-                <div class="field">
-                  <label for="zip">
-                    <span data-lang="en">ZIP code</span>
-                    <span data-lang="fr">Code postal</span>
-                    <span data-lang="es">Código postal</span>
-                  </label>
-                  <input id="zip" name="zip" type="text" autocomplete="postal-code" aria-required="true">
-                  <p class="field-error" id="zip-error"></p>
-                </div>
-                <div class="field">
                   <label for="city">
                     <span data-lang="en">City</span>
                     <span data-lang="fr">Ville</span>
@@ -455,6 +419,15 @@
                   </label>
                   <input id="city" name="city" type="text" autocomplete="address-level2" aria-required="true">
                   <p class="field-error" id="city-error"></p>
+                </div>
+                <div class="field">
+                  <label for="zip">
+                    <span data-lang="en">Zip Code</span>
+                    <span data-lang="fr">Code postal</span>
+                    <span data-lang="es">Código postal</span>
+                  </label>
+                  <input id="zip" name="zip" type="text" autocomplete="postal-code" aria-required="true">
+                  <p class="field-error" id="zip-error"></p>
                 </div>
                 <div class="field">
                   <label for="phone">
@@ -473,21 +446,6 @@
                   </label>
                   <input id="email" name="email" type="email" autocomplete="email" aria-required="true">
                   <p class="field-error" id="email-error"></p>
-                </div>
-                <div class="field field-full">
-                  <label class="consent" for="consent">
-                    <input type="checkbox" id="consent" name="consent" aria-required="true">
-                    <span>
-                      <span data-lang="en">I agree to be contacted about this B2B account request.</span>
-                      <span data-lang="fr">J’accepte que vous me contactiez au sujet de cette demande de compte B2B.</span>
-                      <span data-lang="es">Acepto que me contacten sobre esta solicitud de cuenta B2B.</span>
-                    </span>
-                  </label>
-                  <!-- Replace this notice with the published privacy policy URL before launch. -->
-                  <p class="privacy-note" data-lang="en">The full privacy policy will be linked here before launch.</p>
-                  <p class="privacy-note" data-lang="fr">La politique de confidentialité complète sera publiée avant le lancement.</p>
-                  <p class="privacy-note" data-lang="es">La política de privacidad completa se publicará antes del lanzamiento.</p>
-                  <p class="field-error" id="consent-error"></p>
                 </div>
                 <div class="field field-full">
                   <button class="btn btn-submit" type="submit">

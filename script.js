@@ -17,25 +17,20 @@ const COPY = {
     subjectEnquiry: "Padel & Help — B2B Enquiry",
     whatsapp: "Hello! I would like to know more about Padel & Help and your B2B services.",
     languageLine: "Language: English",
-    consentLine: "Consent to be contacted: Yes",
     menuOpen: "Open menu",
     menuClose: "Close menu",
     langGroup: "Language",
     navLabel: "Primary",
     errors: {
-      firstName: "Please enter your first name.",
-      lastName: "Please enter your last name.",
-      vat: "Please enter your company EU VAT number.",
+      fullName: "Please enter your full name.",
       company: "Please enter your company name.",
+      vat: "Please enter your company VAT number.",
       address: "Please enter your address.",
       country: "Please enter your country.",
-      state: "Please enter your state.",
-      province: "Please enter your province.",
-      zip: "Please enter your ZIP code.",
       city: "Please enter your city.",
+      zip: "Please enter your ZIP code.",
       phone: "Please enter your phone number.",
-      email: "Please enter a valid email address.",
-      consent: "Please confirm that we may contact you."
+      email: "Please enter a valid email address."
     }
   },
   fr: {
@@ -46,25 +41,20 @@ const COPY = {
     subjectEnquiry: "Padel & Help — Demande B2B",
     whatsapp: "Bonjour ! Je souhaite en savoir plus sur Padel & Help et vos services B2B.",
     languageLine: "Langue : Français",
-    consentLine: "Consentement pour être contacté : Oui",
     menuOpen: "Ouvrir le menu",
     menuClose: "Fermer le menu",
     langGroup: "Langue",
     navLabel: "Principal",
     errors: {
-      firstName: "Veuillez indiquer votre prénom.",
-      lastName: "Veuillez indiquer votre nom.",
-      vat: "Veuillez indiquer le numéro de TVA intracommunautaire.",
+      fullName: "Veuillez indiquer votre nom complet.",
       company: "Veuillez indiquer le nom de l’entreprise.",
+      vat: "Veuillez indiquer le numéro de TVA de l’entreprise.",
       address: "Veuillez indiquer l’adresse.",
       country: "Veuillez indiquer le pays.",
-      state: "Veuillez indiquer l’état.",
-      province: "Veuillez indiquer la province.",
-      zip: "Veuillez indiquer le code postal.",
       city: "Veuillez indiquer la ville.",
+      zip: "Veuillez indiquer le code postal.",
       phone: "Veuillez indiquer le numéro de téléphone.",
-      email: "Veuillez indiquer une adresse e-mail valide.",
-      consent: "Veuillez confirmer que nous pouvons vous contacter."
+      email: "Veuillez indiquer une adresse e-mail valide."
     }
   },
   es: {
@@ -75,25 +65,20 @@ const COPY = {
     subjectEnquiry: "Padel & Help — Consulta B2B",
     whatsapp: "¡Hola! Me gustaría saber más sobre Padel & Help y tus servicios B2B.",
     languageLine: "Idioma: Español",
-    consentLine: "Consentimiento para ser contactado: Sí",
     menuOpen: "Abrir el menú",
     menuClose: "Cerrar el menú",
     langGroup: "Idioma",
     navLabel: "Principal",
     errors: {
-      firstName: "Introduce tu nombre.",
-      lastName: "Introduce tus apellidos.",
-      vat: "Introduce el NIF-IVA intracomunitario.",
+      fullName: "Introduce tu nombre completo.",
       company: "Introduce el nombre de la empresa.",
+      vat: "Introduce el número de IVA de la empresa.",
       address: "Introduce la dirección.",
       country: "Introduce el país.",
-      state: "Introduce el estado.",
-      province: "Introduce la provincia.",
-      zip: "Introduce el código postal.",
       city: "Introduce la ciudad.",
+      zip: "Introduce el código postal.",
       phone: "Introduce el teléfono.",
-      email: "Introduce un correo electrónico válido.",
-      consent: "Confirma que podemos contactarte."
+      email: "Introduce un correo electrónico válido."
     }
   }
 };
@@ -240,7 +225,7 @@ function fieldValue(id) {
   return field ? field.value.trim() : "";
 }
 
-const ACCOUNT_FIELDS = ["first-name", "last-name", "vat-number", "company-name", "address", "country", "state", "province", "zip", "city", "phone", "email"];
+const ACCOUNT_FIELDS = ["full-name", "company-name", "vat-number", "address", "country", "city", "zip", "phone", "email"];
 
 const SUBMIT_LABELS = {
   idle: {
@@ -266,16 +251,13 @@ function accountPayload() {
     access_key: WEB3FORMS_ACCESS_KEY,
     subject: COPY[language].subjectAccount,
     email: fieldValue("email"),
-    from_name: [fieldValue("first-name"), fieldValue("last-name")].filter(Boolean).join(" ")
+    from_name: fieldValue("full-name")
   };
 
   ACCOUNT_FIELDS.forEach((id) => {
     const label = visibleText(document.querySelector(`label[for="${id}"]`)) || id;
     payload[label] = fieldValue(id);
   });
-
-  const consentLabel = visibleText(document.querySelector('label[for="consent"]'));
-  if (consentLabel) payload[consentLabel] = COPY[language].consentLine.split(": ").pop();
 
   const languageParts = COPY[language].languageLine.split(":");
   payload[languageParts[0].trim()] = languageParts.slice(1).join(":").trim();
@@ -349,16 +331,13 @@ async function sendAccountRequest() {
 function validateForm() {
   const language = lang();
   const checks = [
-    ["first-name", "firstName"],
-    ["last-name", "lastName"],
-    ["vat-number", "vat"],
+    ["full-name", "fullName"],
     ["company-name", "company"],
+    ["vat-number", "vat"],
     ["address", "address"],
     ["country", "country"],
-    ["state", "state"],
-    ["province", "province"],
-    ["zip", "zip"],
     ["city", "city"],
+    ["zip", "zip"],
     ["phone", "phone"],
     ["email", "email"]
   ];
@@ -375,11 +354,6 @@ function validateForm() {
     setFieldError(field, message);
     if (message && !firstInvalid) firstInvalid = field;
   });
-
-  const consent = document.getElementById("consent");
-  const consentMessage = consent.checked ? "" : COPY[language].errors.consent;
-  setFieldError(consent, consentMessage);
-  if (consentMessage && !firstInvalid) firstInvalid = consent;
 
   if (firstInvalid) firstInvalid.focus();
   return !firstInvalid;
