@@ -60,7 +60,7 @@
     html[lang="fr"] [data-lang]:not([data-lang="fr"]),
     html[lang="es"] [data-lang]:not([data-lang="es"]) { display: none !important; }
   </style>
-  <link rel="stylesheet" href="style.css?v=orange-buttons">
+  <link rel="stylesheet" href="style.css?v=phone-prefix">
 </head>
 <body>
   <a class="skip-link" href="#main">
@@ -469,7 +469,16 @@
                     <span data-lang="fr">Téléphone</span>
                     <span data-lang="es">Teléfono</span>
                   </label>
-                  <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-required="true">
+                  <div class="phone-row">
+                    <div class="phone-prefix">
+                      <button type="button" class="phone-prefix-btn" id="phone-prefix-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="phone-prefix-options">
+                        <span class="phone-prefix-value">+</span>
+                      </button>
+                      <div class="phone-prefix-panel" id="phone-prefix-list" hidden></div>
+                      <input type="hidden" id="phone-prefix" name="phone-prefix" value="">
+                    </div>
+                    <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-required="true">
+                  </div>
                   <p class="field-error" id="phone-error"></p>
                 </div>
                 <div class="field field-full">
@@ -642,6 +651,6 @@
     </footer>
   </main>
 
-  <script src="script.js?v=nav-overlay"></script>
+  <script src="script.js?v=phone-prefix"></script>
 </body>
 </html>
